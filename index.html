@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+@font-face
+{
+	font-family:formfont;
+	src:url("Quicksand-Regular.otf")
+}
+
+div#container{
+background-color:white;
+border-style:solid;
+border-width:1px;
+width:400px;
+height:500px;
+}
+div#pic{
+background-color:blue;
+width:200px;
+height:200px;
+}
+</style>
+
+<script="cordova.js"></script>
+
+<script>
+function pageLoaded()
+{
+	document.addEventListener("deviceready",phoneReady,false);
+	navigator.camera.getPicture(displayPic);
+}
+
+function phoneReady()
+{
+}
+
+function displayPic(imageURL)
+{
+	document.getElementById("pic").src=imageURL;
+}
+
+function initCamera(imageURL)
+{
+	var option={
+		quality:80,
+		destinationType:DATA_URL
+		}
+}
+function selectpiccam()
+{
+	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+    destinationType: destinationType.FILE_URI,
+    sourceType: source });
+}
+</script>
+
+</head>
+
+<body onload="phoneReady()" style='font-family:"formfont"'>
+
+<form action="#">
+<div id="container">
+<table  border="0" style="width:50%, height:100%" >
+  <tr>
+    <td><div id="pic"><img id="pic" /></div></td>
+	<td><input type="button" value="Take Picture with camera" onclick="initCamera">
+	<br> 
+	 <input type="button" value="Select picture from Gallery" onclick="selectpicalbum"> </td>
+  </tr>
+  <tr>
+    <td>Name:</td><td><input type="text" required="required"></td>
+    <tr><td>Email:</td><td><input type="text" required="required"></td></tr>
+  </tr>
+  <tr>
+    <td ><input id="button" type="button" value="register"></td>
+   
+  </tr>
+</table>
+</div>
+</form>
+
+</body>
+</html>
